@@ -21,12 +21,12 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Fix vite permissions
+        run: chmod +x node_modules/.bin/vite
+
       - name: Build Vite site
         run: npm run build
 
-      # React Router / SPA fix:
-      # GitHub Pages will 404 on refresh for nested routes,
-      # so we give it a fallback.
       - name: Copy 404 for SPA fallback
         run: cp dist/index.html dist/404.html
 
